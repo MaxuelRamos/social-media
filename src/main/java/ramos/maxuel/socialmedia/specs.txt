@@ -1,0 +1,32 @@
+
+
+listagem de posts
+- ter filtro para recuperar apenas do usuário logado
+- filtro de data start date and end date
+
+Criação de post
+
+Recuperação de perfil
+
+Mudança de usuário
+
+### More Details
+
+**Users**
+
+- Only alphanumeric characters can be used for username
+- Maximum 14 characters for username
+- Usernames should be unique values
+- Do not build authentication
+- Do not build CRUD for users (registration and sign-in will be handled by a different service, the user model should be part of your data modeling tho. You can seed the database with 4 users to help the reviewer demo your solution)
+- When/if necessary to make your application function, you may hard-code the user. For example, you may need to do this to implement creating new posts.
+
+**Posts**
+
+Posts are the equivalent of Twitter's tweets. They are text-only, user-generated content. Users can write original posts and interact with other users' posts by reposting or quote-posting. For this project, you should implement all three — original posts, reposts, and quote-posting
+
+- A user is not allowed to post more than 5 posts in one day (including reposts and quote posts)
+- Posts can have a maximum of 777 characters
+- Users cannot update or delete their posts
+- Reposting: Users can repost other users' posts (like Twitter Retweet), limited to original posts and quote posts (not reposts)
+- Quote-post: Users can repost other user's posts and leave a comment along with it (like Twitter Quote Tweet) limited to original and reposts (not quote-posts)
