@@ -1,4 +1,11 @@
 
+GET /posts?onlyMine=true|false&start=&end=
+POST /posts
+POST/x/repost
+
+/profile
+
+
 
 listagem de posts
 - ter filtro para recuperar apenas do usuário logado
