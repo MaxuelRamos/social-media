@@ -1,16 +1,28 @@
 package ramos.maxuel.socialmedia.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import ramos.maxuel.socialmedia.controller.dto.ProfileDTO;
+import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.*;
+import ramos.maxuel.socialmedia.controller.dto.UserDTO;
+import ramos.maxuel.socialmedia.domain.User;
+import ramos.maxuel.socialmedia.mapper.UserMapper;
+import ramos.maxuel.socialmedia.service.UserService;
 
 @RestController
 @RequestMapping("/api/me")
+@RequiredArgsConstructor
 public class ProfileController {
 
+    private final UserService userService;
+    private final UserMapper userMapper;
+
     @GetMapping
-    ProfileDTO getProfile() {
-        return null;
+    public UserDTO getProfile() {
+        User authenticatedUser = userService.getAuthenticatedUserProfile();
+        return userMapper.toDto(authenticatedUser);
+    }
+
+    @PutMapping("/{newUserId}")
+    public void changeAuthenticatedUser(@PathVariable Long newUserId) {
+        userService.changeAuthenticatedUser(newUserId);
     }
 }
