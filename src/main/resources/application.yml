@@ -24,3 +24,15 @@ spring:
     console:
       enabled: true
 
+  # ===================================================================
+  # actuator
+  # ===================================================================
+  management:
+    endpoints:
+      web:
+        exposure:
+          include: health
+    endpoint:
+      health:
+        show-details: always
+

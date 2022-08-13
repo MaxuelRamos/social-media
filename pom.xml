@@ -25,6 +25,7 @@
 		<spock-core.version>1.2-groovy-2.4</spock-core.version>
 		<spring-boot-starter-test.version>2.5.0</spring-boot-starter-test.version>
 		<gmavenplus-plugin.version>1.6</gmavenplus-plugin.version>
+		<springdoc-openapi-data-rest.version>1.6.9</springdoc-openapi-data-rest.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -34,6 +35,10 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
 
 		<dependency>
@@ -57,6 +62,17 @@
 			<groupId>org.mapstruct</groupId>
 			<artifactId>mapstruct</artifactId>
 			<version>${mapstruct.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-ui</artifactId>
+			<version>${springdoc-openapi-data-rest.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-data-rest</artifactId>
+			<version>${springdoc-openapi-data-rest.version}</version>
 		</dependency>
 
 	</dependencies>
