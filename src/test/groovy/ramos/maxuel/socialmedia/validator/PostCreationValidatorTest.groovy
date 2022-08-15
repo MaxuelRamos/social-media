@@ -12,8 +12,6 @@ import ramos.maxuel.socialmedia.repository.PostRepository
 import ramos.maxuel.socialmedia.service.UserService
 import spock.lang.Specification
 
-import java.time.ZonedDateTime
-
 import static org.mockito.ArgumentMatchers.any
 import static org.mockito.Mockito.doReturn
 

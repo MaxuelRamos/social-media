@@ -12,6 +12,8 @@ import ramos.maxuel.socialmedia.exception.ResourceNotFoundException;
 import ramos.maxuel.socialmedia.repository.PostRepository;
 import ramos.maxuel.socialmedia.validator.PostCreationValidator;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
 
 @Service
@@ -41,12 +43,12 @@ public class PostService {
         return post;
     }
 
-    public Page<Post> findByParams(boolean onlyMine, int page, int size) {
+    public Page<Post> findByParams(boolean onlyMine, ZonedDateTime start, ZonedDateTime end, int page, int size) {
         PageRequest pageRequest = PageRequest.of(page, size, Sort.Direction.DESC, "timestamp");
 
         Long userId = onlyMine ? userService.getAuthenticatedUserId() : null;
 
-        Page<PostVO> result = postRepository.findByParams(userId, pageRequest);
+        Page<PostVO> result = postRepository.findByParams(userId, start, end, pageRequest);
         return result.map(postAssembler::assemble);
     }
 
