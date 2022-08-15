@@ -12,9 +12,15 @@ import java.time.ZonedDateTime;
 @AllArgsConstructor
 public class PostDTO {
 
+    private Long id;
+
     private String message;
 
     private ZonedDateTime timestamp;
+
+    private Long referencePostId;
+
+    private Long authorId;
 
     private PostDTO referencePost;
 

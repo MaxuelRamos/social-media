@@ -31,4 +31,8 @@ public class UserService {
 
         authenticatedUserId = newUserId;
     }
+
+    public Long getAuthenticatedUserId() {
+        return authenticatedUserId;
+    }
 }
