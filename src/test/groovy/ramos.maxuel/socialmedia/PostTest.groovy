@@ -14,10 +14,10 @@ class PostTest extends Specification {
         post.message = message
 
         if(referencePostExists)
-            post.referencePost = new Post()
+            post.referencePostId = 1L
 
         when:
-        def type = post.getPostType()
+        def type = post.getType()
 
         then:
         expectedResult == type

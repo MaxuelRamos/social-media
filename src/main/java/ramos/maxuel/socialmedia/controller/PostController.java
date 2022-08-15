@@ -34,8 +34,10 @@ public class PostController {
         return posts.map(postMapper::toDto);
     }
 
-    @PostMapping("/{id}/repost")
-    public PostDTO repost(PostDTO postDTO) {
-        return null;
+    @PostMapping("/{postId}/repost")
+    @ResponseStatus(HttpStatus.CREATED)
+    public PostDTO repost(@PathVariable Long postId, PostDTO postDTO) {
+        Post post = postService.repost(postId, postMapper.toEntity(postDTO));
+        return postMapper.toDto(post);
     }
 }

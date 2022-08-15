@@ -40,7 +40,7 @@ public class Post {
 //    private Post referencePost;
 
     @Transient
-    public PostType getPostType() {
+    public PostType getType() {
         return referencePostId == null ? PostType.ORIGINAL :
                 message == null ? PostType.REPOST :
                         PostType.QUOTE_POST;

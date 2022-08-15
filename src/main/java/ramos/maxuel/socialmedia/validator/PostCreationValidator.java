@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
 import ramos.maxuel.socialmedia.domain.Post;
+import ramos.maxuel.socialmedia.domain.PostType;
 import ramos.maxuel.socialmedia.exception.Error;
 import ramos.maxuel.socialmedia.repository.PostRepository;
 import ramos.maxuel.socialmedia.service.UserService;
@@ -12,6 +13,8 @@ import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
+
+import static org.apache.commons.lang3.StringUtils.isBlank;
 
 @Component
 @RequiredArgsConstructor
@@ -33,7 +36,10 @@ public class PostCreationValidator implements Validator<Post> {
     private Optional<Error> validateMessage(Post post) {
         Error error = null;
 
-        if (StringUtils.isBlank(post.getMessage()) || post.getMessage().length() >= MAX_MESSAGE_SIZE) {
+        PostType postType = post.getType();
+        boolean shouldValidateMessage = postType == PostType.ORIGINAL || !isBlank(post.getMessage());
+
+        if (shouldValidateMessage && (isBlank(post.getMessage()) || post.getMessage().length() >= MAX_MESSAGE_SIZE)) {
             error = new Error("Invalid message");
         }
 

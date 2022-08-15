@@ -9,6 +9,7 @@ import org.springframework.http.MediaType
 import ramos.maxuel.socialmedia.BaseIntegrationTest
 import ramos.maxuel.socialmedia.controller.dto.PostDTO
 import ramos.maxuel.socialmedia.domain.Post
+import ramos.maxuel.socialmedia.domain.PostType
 import ramos.maxuel.socialmedia.domain.User
 import ramos.maxuel.socialmedia.repository.PostRepository
 import ramos.maxuel.socialmedia.service.UserService
@@ -121,20 +122,34 @@ class PostControllerTest extends BaseIntegrationTest {
         resultPage.content[0].getMessage() == p1.getMessage()
     }
 
-    def "POST to /api/post/{id}/repost reposts post and returns proper result when post id is valid"() {
+    def "POST to repost creates new post and returns proper result when post id is valid"() {
         given:
-        def urlTemplate = String.format('/api/posts/%d/repost', 1)
+        def user1 = entitiesUtil.createUser()
+        def p1 = entitiesUtil.createPost(user1.id)
+
+        def user2 = entitiesUtil.createUser()
+        userService.changeAuthenticatedUser(user2.id)
+
+        // User2 reposts a user1's post
+        def urlTemplate = String.format('/api/posts/%d/repost', p1.id)
         when:
         def mvcResult = mvc.perform(post(urlTemplate))
                 .andDo(print())
-                .andExpect(status().isOk())
+                .andExpect(status().isCreated())
                 .andReturn()
 
         String content = mvcResult.getResponse().getContentAsString();
         PostDTO result = objectMapper.readValue(content, PostDTO.class)
 
+        def persistedPost = postRepository.findById(result.id).orElseThrow()
         then:
-        thrown(NotImplementedException)
+        result
+        result.type == PostType.REPOST
+        result.referencePostId == p1.id
+
+        persistedPost
+        persistedPost.type == PostType.REPOST
+        persistedPost.referencePostId == p1.id
     }
 
     PostDTO createValidPostDto() {

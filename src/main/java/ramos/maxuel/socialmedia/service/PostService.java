@@ -6,6 +6,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import ramos.maxuel.socialmedia.domain.Post;
+import ramos.maxuel.socialmedia.exception.ResourceNotFoundException;
 import ramos.maxuel.socialmedia.repository.PostRepository;
 import ramos.maxuel.socialmedia.validator.PostCreationValidator;
 
@@ -46,5 +47,20 @@ public class PostService {
         }
 
         return postRepository.findAll(pageRequest);
+    }
+
+    public Post repost(Long postId, Post post) {
+        boolean postExists = postRepository.existsById(postId);
+
+        if(!postExists) {
+            throw new ResourceNotFoundException();
+        }
+
+        post.setReferencePostId(postId);
+        Post finalPostObj = createFrom(post);
+
+        postCreationValidator.validate(finalPostObj);
+
+        return postRepository.save(finalPostObj);
     }
 }

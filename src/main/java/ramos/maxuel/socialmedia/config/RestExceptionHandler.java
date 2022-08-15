@@ -14,6 +14,7 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 import ramos.maxuel.socialmedia.exception.BusinessException;
 import ramos.maxuel.socialmedia.exception.Error;
+import ramos.maxuel.socialmedia.exception.ResourceNotFoundException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,6 +59,15 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
         return ResponseEntity
                 .badRequest()
                 .body(e.getErrors());
+    }
+
+    @ExceptionHandler({ResourceNotFoundException.class })
+    @ResponseBody
+    public ResponseEntity<List<Error>> exceptionHandler(ResourceNotFoundException e) {
+        log.error(format("Resource not found: { %s }", e.getMessage() == null ? e.getError().getMessage() : e.getMessage()));
+        return ResponseEntity
+                .status(HttpStatus.NOT_FOUND)
+                .body(List.of(e.getError()));
     }
 
     @ExceptionHandler({Exception.class})
