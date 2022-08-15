@@ -1,9 +1,11 @@
 package ramos.maxuel.socialmedia.service;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import ramos.maxuel.socialmedia.domain.Post;
-import ramos.maxuel.socialmedia.domain.User;
 import ramos.maxuel.socialmedia.repository.PostRepository;
 import ramos.maxuel.socialmedia.validator.PostCreationValidator;
 
@@ -33,5 +35,16 @@ public class PostService {
         post.setTimestamp(ZonedDateTime.now());
 
         return post;
+    }
+
+    public Page<Post> findByParams(boolean onlyMine, int page, int size) {
+        PageRequest pageRequest = PageRequest.of(page, size, Sort.Direction.DESC, "timestamp");
+
+        if (onlyMine) {
+            Long userId = userService.getAuthenticatedUserId();
+            return postRepository.findByAuthorId(userId, pageRequest);
+        }
+
+        return postRepository.findAll(pageRequest);
     }
 }

@@ -30,7 +30,8 @@ public class PostController {
             @RequestParam(value = "size", required = false, defaultValue = "10") int size,
             @RequestParam(value = "onlyMine", required = false, defaultValue = "false") boolean onlyMine
     ) {
-        return null;
+        Page<Post> posts = postService.findByParams(onlyMine, page, size);
+        return posts.map(postMapper::toDto);
     }
 
     @PostMapping("/{id}/repost")
