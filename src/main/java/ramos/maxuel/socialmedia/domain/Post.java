@@ -25,19 +25,19 @@ public class Post {
     @Column
     private ZonedDateTime timestamp;
 
-    @Column
+    @Column(name = "author_id")
     private Long authorId;
 
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "author_id", insertable = false, updatable = false)
-//    private User author;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "author_id", insertable = false, updatable = false)
+    private User author;
 
     @Column(name = "reference_post_id")
     private Long referencePostId;
 
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "reference_post_id", insertable = false, updatable = false)
-//    private Post referencePost;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "reference_post_id", insertable = false, updatable = false)
+    private Post referencePost;
 
     @Transient
     public PostType getType() {

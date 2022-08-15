@@ -1,6 +1,5 @@
 package ramos.maxuel.socialmedia.controller
 
-
 import org.springframework.beans.factory.annotation.Autowired
 import ramos.maxuel.socialmedia.BaseIntegrationTest
 import ramos.maxuel.socialmedia.controller.dto.UserDTO

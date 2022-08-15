@@ -1,5 +1,6 @@
 package ramos.maxuel.socialmedia.controller.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,6 +11,7 @@ import java.time.ZonedDateTime;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class PostDTO {
 
     private Long id;
@@ -23,6 +25,8 @@ public class PostDTO {
     private Long authorId;
 
     private PostDTO referencePost;
+
+    private UserDTO author;
 
     private PostType type;
 

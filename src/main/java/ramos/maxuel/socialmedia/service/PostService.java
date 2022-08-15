@@ -5,7 +5,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import ramos.maxuel.socialmedia.assembler.PostVOToPostAssembler;
 import ramos.maxuel.socialmedia.domain.Post;
+import ramos.maxuel.socialmedia.domain.PostVO;
 import ramos.maxuel.socialmedia.exception.ResourceNotFoundException;
 import ramos.maxuel.socialmedia.repository.PostRepository;
 import ramos.maxuel.socialmedia.validator.PostCreationValidator;
@@ -19,6 +21,7 @@ public class PostService {
     private final PostCreationValidator postCreationValidator;
     private final PostRepository postRepository;
     private final UserService userService;
+    private final PostVOToPostAssembler postAssembler;
 
     public Post createPost(Post post) {
         postCreationValidator.validate(post);
@@ -41,21 +44,13 @@ public class PostService {
     public Page<Post> findByParams(boolean onlyMine, int page, int size) {
         PageRequest pageRequest = PageRequest.of(page, size, Sort.Direction.DESC, "timestamp");
 
-        if (onlyMine) {
-            Long userId = userService.getAuthenticatedUserId();
-            return postRepository.findByAuthorId(userId, pageRequest);
-        }
+        Long userId = onlyMine ? userService.getAuthenticatedUserId() : null;
 
-        return postRepository.findAll(pageRequest);
+        Page<PostVO> result = postRepository.findByParams(userId, pageRequest);
+        return result.map(postAssembler::assemble);
     }
 
     public Post repost(Long postId, Post post) {
-        boolean postExists = postRepository.existsById(postId);
-
-        if(!postExists) {
-            throw new ResourceNotFoundException();
-        }
-
         post.setReferencePostId(postId);
         Post finalPostObj = createFrom(post);
 
