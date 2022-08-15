@@ -1,10 +1,10 @@
-insert into "user"(username)
+insert into "user"(username, date_joined)
 values
-('user 1'),
-('user 2'),
-('user 3'),
-('user 4'),
-('user 5');
+('user 1', now()),
+('user 2', now()),
+('user 3', now()),
+('user 4', now()),
+('user 5', now());
 
 insert into post (message, timestamp, reference_post_id, author_id)
 values
