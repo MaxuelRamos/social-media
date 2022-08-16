@@ -32,12 +32,15 @@ public class PostService {
     }
 
     private Post createFrom(Post other) {
+        Post post = new Post();
+
+        if (other != null) {
+            post.setMessage(other.getMessage());
+        }
+
         Long authenticatedUserId = userService.getAuthenticatedUserId();
 
-        Post post = new Post();
         post.setAuthorId(authenticatedUserId);
-        post.setReferencePostId(other.getReferencePostId());
-        post.setMessage(other.getMessage());
         post.setTimestamp(ZonedDateTime.now());
 
         return post;
@@ -53,8 +56,9 @@ public class PostService {
     }
 
     public Post repost(Long postId, Post post) {
-        post.setReferencePostId(postId);
         Post finalPostObj = createFrom(post);
+
+        finalPostObj.setReferencePostId(postId);
 
         postCreationValidator.validate(finalPostObj);
 

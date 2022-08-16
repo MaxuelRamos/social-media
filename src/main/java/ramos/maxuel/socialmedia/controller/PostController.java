@@ -10,7 +10,6 @@ import ramos.maxuel.socialmedia.domain.Post;
 import ramos.maxuel.socialmedia.mapper.PostMapper;
 import ramos.maxuel.socialmedia.service.PostService;
 
-import java.time.LocalDate;
 import java.time.ZonedDateTime;
 
 @RestController
@@ -42,7 +41,7 @@ public class PostController {
 
     @PostMapping("/{postId}/repost")
     @ResponseStatus(HttpStatus.CREATED)
-    public PostDTO repost(@PathVariable Long postId, PostDTO postDTO) {
+    public PostDTO repost(@PathVariable Long postId, @RequestBody(required = false) PostDTO postDTO) {
         Post post = postService.repost(postId, postMapper.toEntity(postDTO));
         return postMapper.toDto(post);
     }
