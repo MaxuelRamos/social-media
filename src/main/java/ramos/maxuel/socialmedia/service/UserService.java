@@ -3,6 +3,7 @@ package ramos.maxuel.socialmedia.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ramos.maxuel.socialmedia.domain.User;
+import ramos.maxuel.socialmedia.domain.UserProfileVO;
 import ramos.maxuel.socialmedia.repository.UserRepository;
 
 @Service
@@ -14,8 +15,8 @@ public class UserService {
 
     private final UserRepository userRepository;
 
-    public User getAuthenticatedUserProfile() {
-        return userRepository.findById(authenticatedUserId)
+    public UserProfileVO getAuthenticatedUserProfile() {
+        return userRepository.findProfile(authenticatedUserId)
                 .orElseThrow(IllegalStateException::new); // In theory, at this point, the user should be authenticated.
                                                          // Or else, the auth server would not allow the request to reach this method
     }
