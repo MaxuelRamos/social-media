@@ -1,0 +1,514 @@
+{
+	"info": {
+		"_postman_id": "8af100ec-ae80-4f3b-a1bb-8bbd71c4377f",
+		"name": "Maxuel Ramos - Social media",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Authenticated User",
+			"item": [
+				{
+					"name": "Change authenticated user",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/social-media/api/me/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"social-media",
+								"api",
+								"me",
+								"2"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Change authenticated user",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/social-media/api/me/2",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"social-media",
+										"api",
+										"me",
+										"2"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Content-Length",
+									"value": "0"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 16 Aug 2022 00:59:47 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Profile",
+			"item": [
+				{
+					"name": "Load profile",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/social-media/api/me",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"social-media",
+								"api",
+								"me"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Load profile",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/social-media/api/me",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"social-media",
+										"api",
+										"me"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 16 Aug 2022 00:40:43 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"username\": \"user 1\",\n    \"dateJoined\": \"2022-08-16T00:39:22.450047Z\",\n    \"postCount\": 1\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Posts",
+			"item": [
+				{
+					"name": "Search posts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/social-media/api/posts?start=2022-01-01T00:00:00.0Z&end=2023-01-01T00:00:00.0Z&page=0&size=5",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"social-media",
+								"api",
+								"posts"
+							],
+							"query": [
+								{
+									"key": "start",
+									"value": "2022-01-01T00:00:00.0Z"
+								},
+								{
+									"key": "end",
+									"value": "2023-01-01T00:00:00.0Z"
+								},
+								{
+									"key": "onlyMine",
+									"value": "true",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Search posts",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/social-media/api/posts?start=2022-01-01T00:00:00.0Z&end=2023-01-01T00:00:00.0Z&page=0&size=5",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"social-media",
+										"api",
+										"posts"
+									],
+									"query": [
+										{
+											"key": "start",
+											"value": "2022-01-01T00:00:00.0Z"
+										},
+										{
+											"key": "end",
+											"value": "2023-01-01T00:00:00.0Z"
+										},
+										{
+											"key": "onlyMine",
+											"value": "true",
+											"disabled": true
+										},
+										{
+											"key": "page",
+											"value": "0"
+										},
+										{
+											"key": "size",
+											"value": "5"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 16 Aug 2022 00:42:54 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"content\": [\n        {\n            \"id\": 1,\n            \"message\": \"This is an original post\",\n            \"timestamp\": \"2022-08-16T00:39:22.462405Z\",\n            \"authorId\": 1,\n            \"author\": {\n                \"username\": \"user 1\",\n                \"dateJoined\": \"2022-08-16T00:39:22.450047Z\"\n            },\n            \"type\": \"ORIGINAL\"\n        },\n        {\n            \"id\": 2,\n            \"message\": \"This is another original post\",\n            \"timestamp\": \"2022-08-16T00:39:22.462405Z\",\n            \"authorId\": 2,\n            \"author\": {\n                \"username\": \"user 2\",\n                \"dateJoined\": \"2022-08-16T00:39:22.450047Z\"\n            },\n            \"type\": \"ORIGINAL\"\n        },\n        {\n            \"id\": 3,\n            \"timestamp\": \"2022-08-16T00:39:22.462405Z\",\n            \"referencePostId\": 1,\n            \"authorId\": 3,\n            \"referencePost\": {\n                \"id\": 1,\n                \"message\": \"This is an original post\",\n                \"timestamp\": \"2022-08-16T00:39:22.462405Z\",\n                \"authorId\": 1,\n                \"author\": {\n                    \"username\": \"user 1\",\n                    \"dateJoined\": \"2022-08-16T00:39:22.450047Z\"\n                },\n                \"type\": \"ORIGINAL\"\n            },\n            \"author\": {\n                \"username\": \"user 3\",\n                \"dateJoined\": \"2022-08-16T00:39:22.450047Z\"\n            },\n            \"type\": \"REPOST\"\n        },\n        {\n            \"id\": 4,\n            \"message\": \"This is a quote post\",\n            \"timestamp\": \"2022-08-16T00:39:22.462405Z\",\n            \"referencePostId\": 2,\n            \"authorId\": 4,\n            \"referencePost\": {\n                \"id\": 2,\n                \"message\": \"This is another original post\",\n                \"timestamp\": \"2022-08-16T00:39:22.462405Z\",\n                \"authorId\": 2,\n                \"author\": {\n                    \"username\": \"user 2\",\n                    \"dateJoined\": \"2022-08-16T00:39:22.450047Z\"\n                },\n                \"type\": \"ORIGINAL\"\n            },\n            \"author\": {\n                \"username\": \"user 4\",\n                \"dateJoined\": \"2022-08-16T00:39:22.450047Z\"\n            },\n            \"type\": \"QUOTE_POST\"\n        }\n    ],\n    \"pageable\": {\n        \"sort\": {\n            \"empty\": false,\n            \"sorted\": true,\n            \"unsorted\": false\n        },\n        \"offset\": 0,\n        \"pageNumber\": 0,\n        \"pageSize\": 5,\n        \"unpaged\": false,\n        \"paged\": true\n    },\n    \"totalElements\": 4,\n    \"last\": true,\n    \"totalPages\": 1,\n    \"size\": 5,\n    \"number\": 0,\n    \"sort\": {\n        \"empty\": false,\n        \"sorted\": true,\n        \"unsorted\": false\n    },\n    \"numberOfElements\": 4,\n    \"first\": true,\n    \"empty\": false\n}"
+						}
+					]
+				},
+				{
+					"name": "Create Post",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"message\": \"This is a new post\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/social-media/api/posts",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"social-media",
+								"api",
+								"posts"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create Post",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"message\": \"This is a new post\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/social-media/api/posts",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"social-media",
+										"api",
+										"posts"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 16 Aug 2022 00:44:38 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 5,\n    \"message\": \"This is a new post\",\n    \"timestamp\": \"2022-08-16T00:44:37.99119Z\",\n    \"authorId\": 1,\n    \"type\": \"ORIGINAL\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Repost",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/social-media/api/posts/1/repost",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"social-media",
+								"api",
+								"posts",
+								"1",
+								"repost"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Repost",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/social-media/api/posts/1/repost",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"social-media",
+										"api",
+										"posts",
+										"1",
+										"repost"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 16 Aug 2022 00:45:59 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 6,\n    \"timestamp\": \"2022-08-16T00:45:59.55442Z\",\n    \"referencePostId\": 1,\n    \"authorId\": 1,\n    \"type\": \"REPOST\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Repost with Quote",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"message\": \"Quote message\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/social-media/api/posts/1/repost",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"social-media",
+								"api",
+								"posts",
+								"1",
+								"repost"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Repost with Quote",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"message\": \"Quote message\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/social-media/api/posts/1/repost",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"social-media",
+										"api",
+										"posts",
+										"1",
+										"repost"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 16 Aug 2022 00:58:36 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 5,\n    \"message\": \"Quote message\",\n    \"timestamp\": \"2022-08-16T00:58:36.187414Z\",\n    \"referencePostId\": 1,\n    \"authorId\": 1,\n    \"type\": \"QUOTE_POST\"\n}"
+						}
+					]
+				}
+			]
+		}
+	]
+}
